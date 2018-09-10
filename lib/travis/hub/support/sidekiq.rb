@@ -1,4 +1,4 @@
-require 'sidekiq-pro'
+require 'sidekiq'
 require 'travis/exceptions/sidekiq'
 require 'travis/metrics/sidekiq'
 require 'travis/hub/support/sidekiq/honeycomb'
@@ -24,11 +24,6 @@ module Travis
         end
 
         c.logger.formatter = Support::Sidekiq::Logging.new(config.logger || {})
-
-        if pro?
-          c.super_fetch!
-          c.reliable_scheduler!
-        end
       end
 
       ::Sidekiq.configure_client do |c|
@@ -36,15 +31,7 @@ module Travis
           url: config.redis.url,
           namespace: config.sidekiq.namespace
         }
-
-        if pro?
-          ::Sidekiq::Client.reliable_push!
-        end
       end
-    end
-
-    def pro?
-      ::Sidekiq::NAME == 'Sidekiq Pro'
     end
 
     extend self

@@ -1,4 +1,4 @@
-require 'sidekiq/pro/expiry'
+require 'sidekiq'
 
 module Travis
   module Sidekiq
