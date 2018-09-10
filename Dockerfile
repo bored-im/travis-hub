@@ -13,10 +13,7 @@ WORKDIR /usr/src/app
 COPY Gemfile      /usr/src/app
 COPY Gemfile.lock /usr/src/app
 
-ARG bundle_gems__contribsys__com
-RUN bundle config https://gems.contribsys.com/ $bundle_gems__contribsys__com \
-      && bundle install --deployment \
-      && bundle config --delete https://gems.contribsys.com/
+RUN bundle install --deployment
 
 COPY . /usr/src/app
 
