@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
-gem 'sidekiq-pro', source: 'https://gems.contribsys.com'
+gem 'sidekiq'
 
 gem 'travis-exceptions',      git: 'https://github.com/travis-ci/travis-exceptions'
 gem 'travis-logger',          git: 'https://github.com/travis-ci/travis-logger'
