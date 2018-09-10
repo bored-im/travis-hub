@@ -26,4 +26,5 @@ options = {}
 options_parser(options).parse!
 mode = ARGV.shift || :solo
 
+`cp /config/travis.yml config/travis.yml`
 Travis::Hub::Amqp.new(mode.to_sym, options).run
