@@ -48,7 +48,7 @@ module Travis
           end
 
           def update_job
-            return error_job if event == :reset && resets.limited? && !job.finished?
+            return error_job if event == :reset && !job.finished?
 
             if ENV['CANCELLATION_DISABLED'] == 'true' && (event == :cancel || recancel?)
               raise 'cancellation has been disabled'
