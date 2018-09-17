@@ -20,7 +20,7 @@ module Travis
         def run
           logger.error MSGS[:error] % [job.id, reason]
           error
-          update_log
+          # update_log
         end
 
         private
